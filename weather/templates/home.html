@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block favicon %}
+<link rel="icon" type="image/png" href="{% static 'icons/'|add:weather.weather.0.main|add:'.svg' %}">
+{% endblock %}
+
+{% block title %}{{ weather.name }} - {{ weather.weather.0.description }}{% endblock %}
+
+{% block content %}
+<section class="now">
+
+  <h2>{{ weather.name }}</h2>
+  <p>{{ weather.sys.country }}</p>
+
+  <img class="weather-icon" alt="" src="{% static 'icons/'|add:weather.weather.0.main|add:'.svg' %}"/>
+  <h1>{{ weather.main.temp|floatformat:0 }}°</h1>
+  <h2>{{ weather.weather.0.description }}</h2>
+  
+  <!-- <p>{{weather}}</p> -->
+  
+  <div class="aditional-info">
+
+	<div>
+	  <h3>Vento</h3>
+	  <div class="info">
+		<img alt="" src="{% static 'icons/wind.svg' %}"/>
+		<p>{{ weather.wind.speed }} M/s</p>
+	  </div>
+	</div>
+
+	<div>
+	  <h3>Humidade</h3>
+	  <div class="info">
+		<img alt="" src="{% static 'icons/humidity.svg' %}"/>
+		<p>{{ weather.main.humidity }}%</p>
+	  </div>
+	</div>
+
+	<div>
+	  <h3>Chuva</h3>
+	  <div class="info">
+		<img alt="" src="{% static 'icons/humidity.svg' %}"/>
+		{% if weather.rain %}
+		<p>{{ weather.rain.1h }} mm última H.</p>
+		{% else %}
+		<p>0 mm última H.</p>
+		{% endif %}
+	  </div>
+	</div>
+	
+  </div>
+
+  <div class="by-the-day"> <!-- these on same line -->
+
+	<div>
+	  <h3>Temp. max.</h3>
+	  <div class="info">
+		<img alt="" src="{% static 'icons/morning.svg' %}"/>
+		<p>{{ weather.main.temp_max|floatformat:0 }}°</p>
+	  </div>
+	</div>
+	<div>
+	  <h3>Temp. min.</h3>
+	  <div class="info">
+		<img alt="" src="{% static 'icons/day.svg' %}"/>
+		<p>{{ weather.main.temp_min|floatformat:0 }}°</p>
+	  </div>
+	</div>
+  </div>
+
+</section>
+
+<section class="forecast">
+
+  <!-- essa api como ta aqui tem cordenadas, necessarias pra chamar previsao pra 30 dias -->
+  <div class="forecast-days">
+    <p>Tue, Apr 15</p>
+    <img alt="" src="{% static 'icons/Snow.svg' %}"/>
+    <p>11° 8°</p>
+  </div>
+  <div class="forecast-days"> <!-- today -->
+    <p>Tue, Apr 16</p>
+    <img alt="" src="{% static 'icons/Rain.svg' %}"/>
+    <p>11° 3°</p>
+  </div>
+  <div class="forecast-days">
+    <p>Tue, Apr 17</p>
+    <img alt="" src="{% static 'icons/Thunderstorm.svg' %}"/>
+    <p>11° 8°</p>
+  </div>
+  <div class="forecast-days">
+    <p>Tue, Apr 18</p>
+    <img alt="" src="{% static 'icons/Drizzle.svg' %}"/>
+    <p>11° 8°</p>
+  </div>
+  
+</section>
+{% endblock %}
