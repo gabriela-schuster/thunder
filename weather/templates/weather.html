@@ -71,15 +71,15 @@
 
 </section>
 
+  <!--
 <section class="forecast">
 
-  <!-- essa api como ta aqui tem cordenadas, necessarias pra chamar previsao pra 30 dias -->
   <div class="forecast-days">
     <p>Tue, Apr 15</p>
     <img alt="" src="{% static 'icons/Snow.svg' %}"/>
     <p>11° 8°</p>
   </div>
-  <div class="forecast-days"> <!-- today -->
+  <div class="forecast-days"> today
     <p>Tue, Apr 16</p>
     <img alt="" src="{% static 'icons/Rain.svg' %}"/>
     <p>11° 3°</p>
@@ -94,6 +94,20 @@
     <img alt="" src="{% static 'icons/Drizzle.svg' %}"/>
     <p>11° 8°</p>
   </div>
+  
+</section>
+-->
+
+<section class="principal-news">
+
+  {{news_brasil}}
+  {% for news in news_brasil.news %}
+  <div class="news">
+	<h3>{{news.title}}</h3>
+	<a href="{{news.url}}">Leia mais</a>
+	<p>{{news.summary}}</p>
+  </div>
+  {% endfor %}
   
 </section>
 {% endblock %}

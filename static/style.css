@@ -1,6 +1,9 @@
 * {
 	margin: 0;
 	padding: 0;
+	box-sizing: border-box;
+	outline: none;
+	border: none;
 }
 
 :root {
@@ -25,22 +28,50 @@ h2 {
 h3 {
 	font-size: 1rem;
 }
-h2, h3 {
-	font_weight: 400;
-}
 p {
 	font-size: 1rem;
+	line-heigth: 1.6rem;
 }
 
 img {
 	width: 20px;
+}
+/*
+		messages		*
+*/
+.message {
+	width: 100vw;
+	padding: 0.5rem 1rem;
+	
+	background-color: var(--fg);
+	color: var(--bg);
+}
+
+/*
+		form		*
+*/
+input {
+	padding: 5px;
+	display: block;
+	margin: 0rem auto 1rem;
+	
+	font-size: 1rem;
+	font-family: 'Lato', sans-serif;
+}
+input:not(input[type=submit]) {
+	background-color: var(--bg);
+	border: 1px solid var(--fg);
+}
+input[type=text]:focus {
+	background-color: var(--fg);
+	color: var(--bg);
 }
 
 /*
 		main		*
 */
 main {
-	max-width: 900px;
+	max-width: 800px;
 	margin: 0 auto;
 }
 section {
@@ -49,7 +80,7 @@ section {
 
 
 /*
-		home		*
+		weather		*
 */
 .now {
 	text-align: center
@@ -95,6 +126,37 @@ section {
 	display: flex;
 	gap: 3rem;
 	justify-content: center;
+}
+
+/*
+		news		*
+*/
+.principal-news {
+	display: grid;
+	gap: 3rem;
+	grid-template-columns: 1fr 1fr;
+}
+.news {
+	margin-bottom: 1rem;
+	/* border: 1px solid var(--fg); */
+}
+.news h3 {
+	margin-bottom: 0.5rem;
+}
+
+/*
+		choose city		*
+*/
+.choose_city {
+	min-height: 90vh;
+	
+	display: flex;
+	flex-direction: column;
+	gap: 3rem;
+	justify-content: center;
+	align-items: center
+	
+	/* text-align: center; */
 }
 
 @media (max-width: 470px) {

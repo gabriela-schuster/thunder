@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block favicon %}
+<link rel="icon" type="image/png" href="{% static 'icons/Clear.svg' %}">
+{% endblock %}
+
+{% block title %}Escolher cidade{% endblock %}
+
+{% block content %}
+<section class="choose_city">
+
+  <h2>Nome da sua cidade</h2>
+
+  <form method='GET'>
+	<input name="city" type="text"/>
+	<input name="" type="submit" value="Enviar"/>
+  </form>
+
+</section>
+{% endblock %}
